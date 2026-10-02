@@ -1,0 +1,6 @@
+{
+  "name": "Departamento de Ciencias Biomédicas y del Diagnóstico - USAL",
+  "description": "Sitio web oficial del Departamento de Ciencias Biomédicas y del Diagnóstico de la Facultad de Medicina en la Universidad de Salamanca.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
