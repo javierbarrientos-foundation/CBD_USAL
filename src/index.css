@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Newsreader', Georgia, Cambria, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* USAL Official Corporate Palette */
+    --usal-red: #d22020;            /* Rojo USAL */
+    --usal-red-dark: #b31616;       /* Rojo USAL oscuro */
+    --usal-red-light: #fdf2f2;      /* Rojo USAL suave */
+    --usal-dark-gray: #4d4d4d;      /* Gris corporativo USAL */
+    --usal-blue: #385e9d;           /* Azul corporativo USAL */
+    --usal-blue-dark: #2a4778;      /* Azul corporativo oscuro */
+    --usal-blue-light: #eef3f9;     /* Azul corporativo suave */
+    --usal-light-gray: #eaeaea;     /* Gris claro corporativo USAL */
+
+    /* Design System Mappings */
+    --usal-primary: #d22020;
+    --usal-primary-dark: #b31616;
+    --usal-primary-light: #e03b3b;
+
+    --medical-cyan: #385e9d;
+    --medical-teal: #2f6b8a;
+    --medical-green: #237852;
+
+    /* Fondos y superficies limpias institucionales */
+    --science-bg: #fafafa;
+    --science-surface: #ffffff;
+    --science-surface-soft: #f4f4f4;
+
+    /* Textos de alto contraste */
+    --text-primary: #1f232b;
+    --text-secondary: #4d4d4d;
+    --text-muted: #6b7280;
+
+    /* Bordes y detalles */
+    --border-subtle: #eaeaea;
+    --border-glass: rgba(255, 255, 255, 0.7);
+    --accent-gold: #c59b27;
+  }
+
+  html {
+    font-size: 17.5px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--science-bg);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Selection highlight en Rojo USAL #d22020 */
+  ::selection {
+    background-color: rgba(210, 32, 32, 0.18);
+    color: #b31616;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+}
+
+/* Glassmorphism controlado */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(210, 32, 32, 0.4);
+  box-shadow: 0 16px 32px -8px rgba(210, 32, 32, 0.1);
+}
+
+/* Astro-inspired Modern Glowing & Floating Animations */
+@keyframes astroGlowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes astroFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes astroShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.astro-glow {
+  animation: astroGlowPulse 6s ease-in-out infinite;
+}
+
+.astro-float {
+  animation: astroFloat 8s ease-in-out infinite;
+}
+
+.astro-card {
+  position: relative;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.astro-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(210, 32, 32, 0.3), rgba(56, 94, 157, 0.3), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.astro-card:hover::before {
+  opacity: 1;
+}
+
+/* Fondos científicos especializados con Rojo y Azul USAL */
+.bg-science-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(210, 32, 32, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 94, 157, 0.035) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(210, 32, 32, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Clases de utilidad institucional USAL */
+.text-usal-red { color: var(--usal-red); }
+.bg-usal-red { background-color: var(--usal-red); }
+.border-usal-red { border-color: var(--usal-red); }
+
+.text-usal-blue { color: var(--usal-blue); }
+.bg-usal-blue { background-color: var(--usal-blue); }
+.border-usal-blue { border-color: var(--usal-blue); }
+
+.text-usal-gray { color: var(--usal-dark-gray); }
+.bg-usal-gray-light { background-color: var(--usal-light-gray); }
+.border-usal-gray-light { border-color: var(--usal-light-gray); }
+
+/* Respeto estricto a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

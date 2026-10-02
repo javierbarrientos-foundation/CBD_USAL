@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.dev.vars
+.DS_Store
+CBD_USAL/
+public/proyecto-cbd-usal.zip
+tmp/
+CBD_USAL/
+public/proyecto-cbd-usal.zip
